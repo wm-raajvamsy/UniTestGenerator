@@ -1,0 +1,21 @@
+{
+  "name": "testscript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "ollama": "^0.5.10",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
