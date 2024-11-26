@@ -1,0 +1,10 @@
+  // Navigate to the specified URL and wait for the global configuration to load
+  await page.goto('http://localhost:19009/rn-bundle/index.html#/Main');
+
+  // Wait for the global configuration to be available
+  await page.waitForFunction(() => 
+    typeof wm.App !== 'undefined' && 
+    typeof wm.App.appConfig !== 'undefined' && 
+    wm.App.appConfig.currentPage
+  );
+                
