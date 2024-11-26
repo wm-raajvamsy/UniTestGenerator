@@ -1,0 +1,1 @@
+{"markup":"undefined","script":"Page.onReady+=+function()+{\n\n};\n\nPage.button1Tap+=+function($event,+widget)+{\n++++Page.Widgets.button1.caption+=+\"raaj\"\n};\n\nPage.text1Change+=+function($event,+widget,+newVal,+oldVal)+{\n++++if+(newVal+!=+oldVal)+{\n++++++++Page.Widgets.text1.datavalue+=+newVal;\n++++}\n};"}
