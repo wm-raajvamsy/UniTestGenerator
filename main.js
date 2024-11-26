@@ -66,7 +66,6 @@ class MultiAgentTestGenerator {
         \`\`\`javascript
         import puppeteer from 'puppeteer';
         import { expect } from '@playwright/test';  // ONLY expect from here
-        
         // Additional Puppeteer-specific utilities can be imported here
         \`\`\`
 
@@ -88,9 +87,8 @@ class MultiAgentTestGenerator {
            - ALWAYS return the expression inside page.evaluate()
            - STRICT widget access pattern: 
              \`wm.App.appConfig.currentPage.Widgets.<widgetName>\`
-           - STRICT widget value access pattern:
+           - STRICT widget prop access pattern:
              \`wm.App.appConfig.currentPage.Widgets.<widgetName>.datavalue\`
-           - STRICT widget caption access pattern:
              \`wm.App.appConfig.currentPage.Widgets.<widgetName>.caption\`
         
         
@@ -112,7 +110,7 @@ class MultiAgentTestGenerator {
            - Examples:
              * on-tap="button1Tap($event, widget)" → onTap()
              * on-change="text32Change($event, widget, newVal, oldVal)" → onChange(null, null, 'newval', 'oldval')
-        
+           - NO ARROW FUNCTIONS FOR EVENTS
            STRICT EVENT INVOCATION:
            \`\`\`javascript
            await page.evaluate(() => {
@@ -171,7 +169,6 @@ class MultiAgentTestGenerator {
         
         2. EVENT HANDLING:
            - Transform markup events to direct widget method calls
-           - Use \`onTap()\`, \`onChange()\` instead of event objects
            - Execute ALL events through browser script
         
         3. IMPORT AND MODULE REQUIREMENTS:
@@ -292,7 +289,7 @@ class MultiAgentTestGenerator {
             let generatedTestCases = await this.generateTestCases(testCases, markup, script, testUrl);
 
             // Save initial test cases
-            fs.writeFileSync('init_test_cases.js', generatedTestCases);
+            // fs.writeFileSync('init_test_cases.js', generatedTestCases);
 
             console.log("🕵️ Reviewing Test Cases...");
             generatedTestCases = await this.reviewTestCases(generatedTestCases, testCases, markup, script, testUrl);

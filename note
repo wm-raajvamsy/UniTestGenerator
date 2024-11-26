@@ -1,4 +1,8 @@
-  // Navigate to the specified URL and wait for the global configuration to load
+As I'm still working on this, 
+some times it misses the following navigate to page and wait till page load. 
+please add them to test case before running them
+
+// Navigate to the specified URL and wait for the global configuration to load
   await page.goto('http://localhost:19009/rn-bundle/index.html#/Main');
 
   // Wait for the global configuration to be available
