@@ -12,45 +12,7 @@ class MultiAgentTestGenerator {
         this.ollama = new Ollama({ host, fetch });
     }
 
-    async fetchProjectConfig(url) {
-        return new Promise((resolve, reject) => {
-            const options = {
-                'method': 'GET',
-                'url': url,
-                'headers': {
-                    'accept': 'application/json, text/plain, */*',
-                    'accept-language': 'en-US,en;q=0.9',
-                    'cache-control': 'no-cache',
-                    'cookie': 'JSESSIONID=755D751A95D11B633931152A644363CF; _ga=GA1.2.2100626361.1732007450; _gid=GA1.2.324244642.1732526985; JSESSIONID=FA28C96CAB3043BAC019A56AD8F7A5E9; auth_cookie=d77WZThLnms4P7LMn0cskKnk2336bc64d52e25',
-                    'pragma': 'no-cache',
-                    'priority': 'u=1, i',
-                    'referer': 'https://www.wavemakeronline.com/studio/project-native-mobile.html?project-id=WMPRJ2c91808992f49b7f0192f5902ed30055',
-                    'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
-                    'sec-ch-ua-mobile': '?0',
-                    'sec-ch-ua-platform': '"macOS"',
-                    'sec-fetch-dest': 'empty',
-                    'sec-fetch-mode': 'cors',
-                    'sec-fetch-site': 'same-origin',
-                    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-                    'x-requested-with': 'XMLHttpRequest',
-                    'x-wm-platform-version': '11.9.2'
-                  }
-            };
 
-            request(options, (error, response) => {
-                if (error) reject(error);
-                try {
-                    const jsonBody = JSON.parse(response.body);
-                    resolve({
-                        markup: decodeURIComponent(jsonBody.Markup),
-                        script: decodeURIComponent(jsonBody.script)
-                    });
-                } catch (parseError) {
-                    reject(parseError);
-                }
-            });
-        });
-    }
 
     async generateTestCases(testCases, markup, script, testUrl) {
         const generatorPrompt = `Write comprehensive Puppeteer test cases for WaveMaker React application with ABSOLUTE ENFORCEMENT of global configuration and widget interaction guidelines:
